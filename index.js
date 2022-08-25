@@ -4,6 +4,55 @@ const list = document.querySelector(".list")
 const darkMode = document.querySelector("#mode")
 
 
+const body = document.querySelector('body')
+const pLight = document.getElementsByClassName('p-light')
+const todo = document.querySelector('.todo')
+const action = document.querySelector('.action')
+
+
+
+
+function turnDark(){
+  body.classList.add('dark-mode-body')
+  inputSelection.classList.add('dark-mode-mission')
+  todo.classList.add('dark-mode-todo')
+  action.classList.add('dark-mode-action')
+
+  if(pLight.length > 0){
+    for(let i = 0; i < pLight.length; i++){
+      pLight[i].classList.add('p-dark')
+    }
+  }
+}
+
+function turnLight(){
+  body.classList.remove('dark-mode-body')
+  inputSelection.classList.remove('dark-mode-mission')
+  todo.classList.remove('dark-mode-todo')
+  action.classList.remove('dark-mode-action')
+
+
+  if(pLight.length > 0){
+    for(let i = 0; i < pLight.length; i++){
+      pLight[i].classList.remove('p-dark')
+    }
+  }
+
+}
+
+
+
+darkMode.addEventListener("click", function(){
+
+  let src = darkMode.getAttribute('src')
+  let newsrc = (src === 'images/icon-moon.svg') ? 'images/icon-sun.svg' : 'images/icon-moon.svg'
+  
+  darkMode.src = newsrc
+
+  newsrc === 'images/icon-sun.svg' ? turnDark() : turnLight()
+
+})
+
 
 
 function deleteItem(e){
@@ -48,6 +97,7 @@ inputSelection.addEventListener("keypress", function(event){
     left.appendChild(checkImg)
 
     const paragraphLeft = document.createElement('p')
+    paragraphLeft.classList.add('p-light')
     paragraphLeft.innerText = inputSelection.value
 
     left.appendChild(paragraphLeft)
@@ -65,14 +115,11 @@ inputSelection.addEventListener("keypress", function(event){
     right.appendChild(removeImg)
 
     inputSelection.value = ''
+
+    
+
   }
 })
 
-darkMode.addEventListener("click", function(){
 
-  let src = darkMode.getAttribute('src')
-  let newsrc = (src === 'images/icon-moon.svg') ? 'images/icon-sun.svg' : 'images/icon-moon.svg'
-  
-  darkMode.src = newsrc
-})
 

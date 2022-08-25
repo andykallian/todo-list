@@ -69,8 +69,13 @@ body{
   background-repeat: no-repeat;
   background-color: var(--Very-Light-Grayish-Blue);
 
+  transition: background-color .3s ease-in-out;
+  transition: background-image .3s ease-in-out;
+
 
 }
+
+
 
 .container{
   width: 51rem;
@@ -104,16 +109,8 @@ body{
   cursor: pointer;
 }
 
-.logo input{
-  width: 100%;
-  height: 5rem;
-  padding: 1rem;
 
-  border-radius: .7rem;
 
-  outline: none;
-  border: none;
-}
 
 
 .list{
@@ -138,6 +135,15 @@ body{
   gap: 2rem;
 }
 
+.p-light{
+  color: var(--Very-Dark-Grayish-Blue);
+  font-weight: 700;
+
+  transform: color .3s ease-in-out;
+}
+
+
+
 .noChecked{
   content: '';
   width: 2rem;
@@ -155,6 +161,8 @@ body{
   cursor: pointer;
 }
 
+
+
 .cross{
   cursor: pointer;
   opacity: 0;
@@ -166,10 +174,32 @@ body{
   transition: opacity .5s ease-in-out;
 }
 
+#mission{
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+
+  border-radius: .7rem;
+
+  outline: none;
+  border: none;
+
+  transition: background-color .3s ease-in-out;
+}
+
+
+#mission .todo{
+  box-shadow: 5px 5px 15px 5px rgb(0 0 0 / 0.27);
+}
+
+
+
 .todo{
   background-color: #fff;
   border-radius: .7rem;
   padding: 1.5rem;
+
+  transition: background-color .3s ease-in-out;
 }
 
 
@@ -181,6 +211,8 @@ body{
   padding-block: 1rem;
   background-color: #fff;
   border-radius: .7rem;
+
+  transition: background-color .3s ease-in-out;
 }
 
 .action div{
@@ -190,10 +222,31 @@ body{
 
 .action p{
   font-size: 1.5rem;
-  font-weight: 700;
   cursor: pointer;
+  transition: color .3s ease-in-out;
 }
 
 .action p:hover{
   color: var(--Bright-Blue);
+  transition: color .3s ease-in-out;
+}
+
+
+/* DARK MODE */
+
+.dark-mode-body{
+  background-color: var(--Very-Dark-Blue);
+  background-image: url(images/bg-desktop-dark.jpg);
+  transition: background-color .3s ease-in-out;
+  transition: background-image .3s ease-in-out;
+}
+
+.p-dark{
+  color: var(--Light-Grayish-Blue);
+  transform: color .3s ease-in-out;
+}
+
+.dark-mode-mission, .dark-mode-todo, .dark-mode-action{
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  transition: background-color .3s ease-in-out;
 }
