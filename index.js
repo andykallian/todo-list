@@ -7,7 +7,8 @@ const listLength = document.getElementsByClassName('flex-container')
 
 
 const body = document.querySelector('body')
-const pLight = document.getElementsByClassName('p-light')
+const pList = document.getElementsByClassName('plist')
+const checklist = document.getElementsByClassName('checklist')
 const todo = document.querySelector('.todo')
 const action = document.querySelector('.action')
 
@@ -21,11 +22,20 @@ function turnDark(){
   todo.classList.add('dark-mode-todo')
   action.classList.add('dark-mode-action')
 
-  if(pLight.length > 0){
-    for(let i = 0; i < pLight.length; i++){
-      pLight[i].classList.add('p-dark')
+  if(pList.length > 0){
+    for(let i = 0; i < pList.length; i++){
+      pList[i].classList.add('p-dark')
+      pList[i].classList.remove('p-light')
     }
   }
+
+  if(checklist.length > 0){
+    for(let i = 0; i < checklist.length; i++){
+      checklist[i].classList.add('dark-mode-noChecked')
+      checklist[i].classList.remove('noChecked')
+    }
+  }
+
 }
 
 function turnLight(){
@@ -35,11 +45,21 @@ function turnLight(){
   action.classList.remove('dark-mode-action')
 
 
-  if(pLight.length > 0){
-    for(let i = 0; i < pLight.length; i++){
-      pLight[i].classList.remove('p-dark')
+  if(pList.length > 0){
+    for(let i = 0; i < pList.length; i++){
+      pList[i].classList.remove('p-dark')
+      pList[i].classList.add('p-light')
     }
   }
+
+  if(checklist.length > 0){
+    for(let i = 0; i < checklist.length; i++){
+      checklist[i].classList.remove('dark-mode-noChecked')
+      checklist[i].classList.add('noChecked')
+    }
+  }
+  
+
   
 }
 
@@ -74,56 +94,79 @@ darkMode.addEventListener("click", function(){
 
 inputSelection.addEventListener("keypress", function(event){
   if (event.key === "Enter" && inputSelection.value != ''){
-    
+
+    // First, create a div (flex-container)
     const flexContainer = document.createElement('div')
 
     flexContainer.classList.add("flex-container")
 
+    // Set flex-container div inside 'list' div
     list.appendChild(flexContainer)
 
+    // second, crete anothe div (left)
     const left = document.createElement('div')
     left.classList.add("left")
 
+    // set left div inside flex-container div
     flexContainer.appendChild(left)
 
+    let src = darkMode.getAttribute('src')
+
+    // third, create a img (checklist)
     const checkImg = document.createElement('img')
-    checkImg.classList.add("noChecked")
+
+    checkImg.classList.add('checklist')
+
+    src === 'images/icon-moon.svg' ? 
+    checkImg.classList.add('noChecked') : 
+    checkImg.classList.add('dark-mode-noChecked')
+  
     checkImg.onclick = () => markCheck(checkImg)
     checkImg.setAttribute('id','check')
     checkImg.setAttribute('src',"images/icon-check.svg")
 
-
+    // set checklist img inside left div
     left.appendChild(checkImg)
 
+    // fourth, create a p (paragraphLeft/plist)
     const paragraphLeft = document.createElement('p')
-    paragraphLeft.classList.add('p-light')
+
     paragraphLeft.innerText = inputSelection.value
 
+    paragraphLeft.classList.add('plist')
+
+    src === 'images/icon-moon.svg' ? 
+    paragraphLeft.classList.add('p-light') : 
+    paragraphLeft.classList.add('p-dark')
+
+    // set paragraphLeft/plist inside left div
     left.appendChild(paragraphLeft)
 
+    //fifth, create anothe div (right)
     const right = document.createElement('div')
     right.classList.add("right")
+
+    // set right div inside flex container div
     flexContainer.appendChild(right)
 
+    //sixth, create a img (img class='cross' id='remove')
     const removeImg = document.createElement('img')
     removeImg.classList.add("cross")
     removeImg.setAttribute('id', 'remove')
     removeImg.onclick = () => deleteItem(flexContainer)
     removeImg.setAttribute('src', "images/icon-cross.svg")
 
+    // set remove img inside right div
     right.appendChild(removeImg)
 
-    for(let i = 0; i < listLength.length; i++){
-      itensNumber.innerHTML = `${[i+1]} itens left`
-    }
 
+    // get list Length to set itensNumber dynamically
+    const itens = listLength.length
+    itensNumber.innerHTML = `${itens} itens left`
+
+    //set input value to empty
     inputSelection.value = ''
   }
 })
-
-
-
-
-
 
 

@@ -67,20 +67,17 @@ body{
 
   background-image: url(images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
   background-color: var(--Very-Light-Grayish-Blue);
 
   transition: background-color .3s ease-in-out;
   transition: background-image .3s ease-in-out;
-
-
 }
-
-
 
 .container{
   width: 51rem;
   padding: 1rem;
+  position: relative;
+  top: 9%;
 
 }
 
@@ -140,18 +137,18 @@ body{
   color: var(--Very-Dark-Grayish-Blue);
   font-weight: 700;
 
-  transform: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
 }
 
 
 
 .noChecked{
-  content: '';
   width: 2rem;
   height: 2rem;
   border: 1px solid var(--Dark-Blue);
   border-radius: 50%;
   cursor: pointer;
+  background-color: var(--Dark-Blue);
 }
 
 .checked{
@@ -239,15 +236,24 @@ body{
   background-color: var(--Very-Dark-Blue);
   background-image: url(images/bg-desktop-dark.jpg);
   transition: background-color .3s ease-in-out;
-  transition: background-image .3s ease-in-out;
 }
 
 .p-dark{
   color: var(--Light-Grayish-Blue);
-  transform: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
 }
 
 .dark-mode-mission, .dark-mode-todo, .dark-mode-action{
   background-color: var(--Very-Dark-Desaturated-Blue);
   transition: background-color .3s ease-in-out;
+}
+
+.dark-mode-noChecked{
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--Dark-Blue);
+  border-radius: 50%;
+  cursor: pointer;
 }
