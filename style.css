@@ -67,6 +67,7 @@ body{
 
   background-image: url(images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
+  background-size: contain;
   background-color: var(--Very-Light-Grayish-Blue);
 
   transition: background-color .3s ease-in-out;

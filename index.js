@@ -2,6 +2,8 @@ const inputSelection = document.querySelector("#mission")
 const remove = document.querySelector("#remove")
 const list = document.querySelector(".list")
 const darkMode = document.querySelector("#mode")
+const itensNumber = document.querySelector('#itens-number')
+const listLength = document.getElementsByClassName('flex-container')
 
 
 const body = document.querySelector('body')
@@ -13,6 +15,7 @@ const action = document.querySelector('.action')
 
 
 function turnDark(){
+
   body.classList.add('dark-mode-body')
   inputSelection.classList.add('dark-mode-mission')
   todo.classList.add('dark-mode-todo')
@@ -37,9 +40,24 @@ function turnLight(){
       pLight[i].classList.remove('p-dark')
     }
   }
-
+  
 }
 
+function deleteItem(e){
+  e.remove()
+
+  listLength.length = 0 ? itensNumber.innerHTML = '0 itens left' : itensNumber.innerHTML = `${listLength.length} itens left`
+}
+
+function markCheck(e){
+  if(e.classList.contains('noChecked')){
+      e.classList.remove("noChecked")
+      e.classList.add("checked")
+    }else{
+      e.classList.add("noChecked")
+      e.classList.remove("checked")
+    }
+}
 
 
 darkMode.addEventListener("click", function(){
@@ -52,25 +70,6 @@ darkMode.addEventListener("click", function(){
   newsrc === 'images/icon-sun.svg' ? turnDark() : turnLight()
 
 })
-
-
-
-function deleteItem(e){
-  e.remove()
-}
-
-
-function markCheck(e){
-  if(e.classList.contains('noChecked')){
-          e.classList.remove("noChecked")
-          e.classList.add("checked")
-        }else{
-          e.classList.add("noChecked")
-          e.classList.remove("checked")
-        } 
-
-}
-
 
 
 inputSelection.addEventListener("keypress", function(event){
@@ -114,12 +113,17 @@ inputSelection.addEventListener("keypress", function(event){
 
     right.appendChild(removeImg)
 
+    for(let i = 0; i < listLength.length; i++){
+      itensNumber.innerHTML = `${[i+1]} itens left`
+    }
+
     inputSelection.value = ''
-
-    
-
   }
 })
+
+
+
+
 
 
 
