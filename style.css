@@ -56,7 +56,6 @@ body{
 
   width: 100vw;
   height: 100vh;
-  padding-top: 8rem;
 
   color: var(--Very-Dark-Grayish-Blue);
 
@@ -213,9 +212,13 @@ body{
   transition: background-color .3s ease-in-out;
 }
 
-.action div{
+.options{
   display: flex;
   gap: 2rem;
+}
+
+.options-mobile{
+  display: none;
 }
 
 .action p{
@@ -224,10 +227,12 @@ body{
   transition: color .3s ease-in-out;
 }
 
-.action p:hover{
+.options p:hover{
   color: var(--Bright-Blue);
   transition: color .3s ease-in-out;
 }
+
+
 
 
 /* DARK MODE */
@@ -257,3 +262,51 @@ body{
   border-radius: 50%;
   cursor: pointer;
 }
+
+@media screen and (max-width: 430px) {
+  
+  body{
+    padding-inline: 1rem ;
+  }
+
+  .container{
+    top: 8%;
+  }
+
+  .todo{
+    position: relative;
+  }
+
+  .action p{
+    font-size: 1.8rem;
+  }
+
+  .options{
+    display: none;
+  }
+
+  .options-mobile{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 1.5rem;
+    left: 50%;
+    top: 4rem;
+    background-color: #fff;
+
+    transform: translate(-50%, -50%);
+    
+    border-radius: .7rem;
+  }
+
+  .options-mobile p:hover{
+    color: var(--Bright-Blue);
+    transition: color .3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .plist{
+    font-size: 2.2rem;
+  }
+}
+
