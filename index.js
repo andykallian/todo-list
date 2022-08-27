@@ -11,6 +11,7 @@ const pList = document.getElementsByClassName('plist')
 const checklist = document.getElementsByClassName('checklist')
 const todo = document.querySelector('.todo')
 const action = document.querySelector('.action')
+const mobileDiv = document.querySelector('.options-mobile')
 
 
 
@@ -20,6 +21,7 @@ function turnDark(){
   inputSelection.classList.add('dark-mode-mission')
   todo.classList.add('dark-mode-todo')
   action.classList.add('dark-mode-action')
+  mobileDiv.classList.add('options-mobile-dark')
 
   if(pList.length > 0){
     for(let i = 0; i < pList.length; i++){
@@ -42,6 +44,7 @@ function turnLight(){
   inputSelection.classList.remove('dark-mode-mission')
   todo.classList.remove('dark-mode-todo')
   action.classList.remove('dark-mode-action')
+  mobileDiv.classList.remove('options-mobile-dark')
 
 
   if(pList.length > 0){
