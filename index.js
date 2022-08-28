@@ -94,6 +94,15 @@ darkMode.addEventListener("click", function(){
 })
 
 
+
+  
+  
+
+
+
+
+
+
 inputSelection.addEventListener("keypress", function(event){
   if (event.key === "Enter" && inputSelection.value != ''){
 
@@ -126,6 +135,22 @@ inputSelection.addEventListener("keypress", function(event){
     checkImg.onclick = () => markCheck(checkImg)
     checkImg.setAttribute('id','check')
     checkImg.setAttribute('src',"images/icon-check.svg")
+
+    // eventListenner for line-through on iten
+
+    // checkImg.addEventListener('click', function(){
+    //   if(checkImg.classList.contains('checked')){
+    //     paragraphLeft.classList.add('p-through')
+    //   }else{
+    //     paragraphLeft.classList.remove('p-through')
+    //   }
+    // })
+
+    checkImg.addEventListener('click', () =>{
+      checkImg.classList.contains('checked') ?
+      paragraphLeft.classList.add('p-through') :
+      paragraphLeft.classList.remove('p-through')
+    })
 
     // set checklist img inside left div
     left.appendChild(checkImg)
@@ -168,7 +193,12 @@ inputSelection.addEventListener("keypress", function(event){
 
     //set input value to empty
     inputSelection.value = ''
+
+    
+    
   }
 })
+
+
 
 

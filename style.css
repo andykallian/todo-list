@@ -110,6 +110,12 @@ body{
   margin-bottom: 1rem;
 }
 
+.p-through{
+  text-decoration: line-through;
+  text-decoration-thickness: .15rem;
+}
+
+
 .flex-container{
   display: flex;
   justify-content: space-between;
